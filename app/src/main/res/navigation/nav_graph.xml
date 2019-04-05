@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tool="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/navigation_start">
+    <fragment
+        android:id="@+id/navigation_start"
+        android:name="de.tyxar.examtabel.view.fragment.StartFragment"
+        android:label="fragment_start"
+        tool:layout="@layout/fragment_start" >
+        <action
+            android:id="@+id/action_create_category"
+            app:destination="@id/navigation_category" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_category"
+        android:name="de.tyxar.examtabel.view.fragment.CategoryFragment"
+        android:label="fragment_category"
+        tool:layout="@layout/fragment_category" >
+        <action
+            android:id="@+id/action_start"
+            app:destination="@id/navigation_start" />
+    </fragment>
+    <fragment
+        android:id="@+id/navigation_exam"
+        android:name="de.tyxar.examtabel.view.fragment.ExamFragment"
+        android:label="fragment_category"
+        tool:layout="@layout/fragment_exam" >
+        <action
+            android:id="@+id/action_start"
+            app:destination="@id/navigation_start" />
+    </fragment>
+</navigation>

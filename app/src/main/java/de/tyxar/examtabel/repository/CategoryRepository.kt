@@ -5,17 +5,19 @@ import androidx.lifecycle.LiveData
 import de.tyxar.examtabel.database.dao.CategoryDao
 import de.tyxar.examtabel.database.entity.Category
 
-class CategoryRepository(private val categoryDao: CategoryDao) {
+class CategoryRepository(private val categoryDao: CategoryDao)
+    : BaseRepository<Category>(categoryDao) {
+
     @WorkerThread
-    suspend fun create(category: Category) = categoryDao.insert(category)
+    suspend fun create(t: Category) = categoryDao.insert(t)
+
+    @WorkerThread
+    suspend fun update(t: Category) = categoryDao.update(t)
+
+    @WorkerThread
+    suspend fun delete(t: Category) = categoryDao.delete(t)
 
     fun read(categoryId : Int) : LiveData<Category> = categoryDao.get(categoryId)
 
     fun readAll() : LiveData<MutableList<Category>> = categoryDao.getAll()
-
-    @WorkerThread
-    suspend fun update(category: Category) = categoryDao.update(category)
-
-    @WorkerThread
-    suspend fun delete(category: Category) = categoryDao.delete(category)
 }

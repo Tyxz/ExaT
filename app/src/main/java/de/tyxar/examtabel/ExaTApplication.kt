@@ -3,6 +3,9 @@ package de.tyxar.examtabel
 import android.app.Application
 import androidx.appcompat.app.AppCompatDelegate
 import de.tyxar.examtabel.database.AppDatabase
+import de.tyxar.examtabel.repository.CatOfExaRepository
+import de.tyxar.examtabel.repository.CategoryRepository
+import de.tyxar.examtabel.repository.ExamRepository
 import de.tyxar.examtabel.view.model.category.CategoryViewModel
 import de.tyxar.examtabel.view.model.category.CategoryViewModelFactory
 import de.tyxar.examtabel.view.model.coe.CatOfExaViewModel
@@ -22,11 +25,11 @@ class ExaTApplication : Application(), KodeinAware {
         bind() from singleton { instance<AppDatabase>().categoryDao()}
         bind() from singleton { instance<AppDatabase>().examDao()}
         bind() from singleton { instance<AppDatabase>().categoriesOfExamDao()}
-        bind() from singleton { CategoryViewModel(instance())}
+        bind() from singleton { CategoryRepository(instance())}
         bind() from provider { CategoryViewModelFactory(instance()) }
-        bind() from singleton { ExamViewModel(instance()) }
+        bind() from singleton { ExamRepository(instance()) }
         bind() from provider { ExamViewModelFactory(instance()) }
-        bind() from singleton { CatOfExaViewModel(instance())}
+        bind() from singleton { CatOfExaRepository(instance(), instance())}
         bind() from provider { CatOfExaViewModelFactory(instance()) }
 
     }

@@ -18,7 +18,7 @@ import java.util.*
 )
 data class Exam (
     @PrimaryKey(autoGenerate = true)
-    val exam_id : Int = -1,
+    val exam_id : Int = 0,
     var exam_name : String = "",
     var exam_credits : Int = -1,
     var exam_grade : Float = -1f,

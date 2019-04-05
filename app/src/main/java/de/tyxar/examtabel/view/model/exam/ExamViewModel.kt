@@ -13,7 +13,7 @@ class ExamViewModel(private val repository: ExamRepository) : ViewModel() {
 
     private var parentJob = Job()
     private val coroutineContext : CoroutineContext
-        get() = parentJob + Dispatchers.Main
+        get() = parentJob + Dispatchers.IO
     private val scope = CoroutineScope(coroutineContext)
 
     fun create(exam: Exam) = scope.launch {

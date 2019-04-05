@@ -12,6 +12,10 @@ import de.tyxar.examtabel.database.entity.CategoriesOfExam
 import de.tyxar.examtabel.database.entity.Category
 import de.tyxar.examtabel.database.entity.Exam
 import de.tyxar.examtabel.database.util.converter.DateTypeConverter
+import androidx.sqlite.db.SupportSQLiteDatabase
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 @Database(
     entities = [Category::class, Exam::class, CategoriesOfExam::class],

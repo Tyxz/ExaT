@@ -15,7 +15,7 @@ class CatOfExaViewModel(private val repository: CatOfExaRepository) : ViewModel(
 
     private var parentJob = Job()
     private val coroutineContext : CoroutineContext
-    get() = parentJob + Dispatchers.Main
+    get() = parentJob + Dispatchers.IO
     private val scope = CoroutineScope(coroutineContext)
 
     fun create(catOfExa: CategoriesOfExam) = scope.launch {

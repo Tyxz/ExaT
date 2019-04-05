@@ -5,20 +5,11 @@ import androidx.room.*
 import de.tyxar.examtabel.database.entity.Exam
 
 @Dao
-interface ExamDao {
-
-    @Insert
-    fun insert(exam: Exam)
+interface ExamDao : BaseDao<Exam> {
 
     @Query("SELECT * FROM exam_table WHERE exam_id = :exam_id")
     fun get(exam_id : Int) : LiveData<Exam>
 
     @Query("SELECT * FROM exam_table")
     fun getAll() : LiveData<MutableList<Exam>>
-
-    @Update
-    fun update(exam: Exam)
-
-    @Delete
-    fun delete(exam: Exam)
 }

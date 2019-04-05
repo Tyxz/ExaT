@@ -15,19 +15,19 @@ class CategoryViewModel(private val repository: CategoryRepository) : ViewModel(
 
     private var parentJob = Job()
     private val coroutineContext : CoroutineContext
-        get() = parentJob + Dispatchers.Main
+        get() = parentJob + Dispatchers.IO
     private val scope = CoroutineScope(coroutineContext)
 
-    fun create(Category: Category) = scope.launch {
-        repository.create(Category)
+    fun create(category: Category) = scope.launch {
+        repository.create(category)
     }
     fun read(CategoryId : Int) = repository.read(CategoryId)
     fun readAll() = repository.readAll()
-    fun update(Category: Category) = scope.launch {
-        repository.update(Category)
+    fun update(category: Category) = scope.launch {
+        repository.update(category)
     }
-    fun delete(Category: Category) = scope.launch {
-        repository.delete(Category)
+    fun delete(category: Category) = scope.launch {
+        repository.delete(category)
     }
     override fun onCleared() {
         super.onCleared()
